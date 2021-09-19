@@ -21,8 +21,6 @@ jobs:
         with:
           python-version: 3.9
       - name: Install Depedencies
-        with:
-          python-version: 3.9
         run: |
           python -m pip install --upgrade pip
           pip install flake8 pytest
