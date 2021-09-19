@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Testing stuff
-        run: pwd
+        run: bash pwd
   lint:
     runs-on: ubuntu-latest
     steps:
