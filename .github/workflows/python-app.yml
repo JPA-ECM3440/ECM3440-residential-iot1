@@ -18,6 +18,11 @@ defaults:
 
 
 jobs:
+  init:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Testing stuff
+        run: pwd
   lint:
     runs-on: ubuntu-latest
     steps:
