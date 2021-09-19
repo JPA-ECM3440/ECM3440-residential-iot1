@@ -5,6 +5,7 @@ name: Python application
 
 on:
   push:
+    branches: [ jdday-github-actions ]
     tags:
       - v1.*
   pull_request:
