@@ -4,11 +4,18 @@
 name: Python application
 
 on:
-  push: []
+  push:
+    tags:
+      - v1.*
   pull_request:
     branches: [ main ]
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set Up Python 3.9
   build:
 
     runs-on: ubuntu-latest
