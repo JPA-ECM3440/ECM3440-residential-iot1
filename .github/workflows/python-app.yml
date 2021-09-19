@@ -18,11 +18,16 @@ defaults:
 
 
 jobs:
+
   init:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: scripts
     steps:
       - name: Testing stuff
-        run: bash pwd
+        run:  pwd
   lint:
     runs-on: ubuntu-latest
     steps:
