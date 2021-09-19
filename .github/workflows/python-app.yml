@@ -27,6 +27,7 @@ jobs:
         working-directory: scripts
     steps:
       - name: Testing stuff
+      - uses: actions/checkout@v2
         run:  pwd
   lint:
     runs-on: ubuntu-latest
