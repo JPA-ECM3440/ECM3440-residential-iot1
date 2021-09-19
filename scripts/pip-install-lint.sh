@@ -1,1 +1,1 @@
-pip install flake8
+python pip install flake8
