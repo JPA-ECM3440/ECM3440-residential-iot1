@@ -11,13 +11,19 @@ on:
   pull_request:
     branches: [ main ]
 
+defaults:
+  run:
+    shell: bash
+    working-directory: scripts
+
+
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - name: Run flake8 lint
         run: |
-          bash ./scripts/pip-install-lint.sh
+          pip-install-lint.sh
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
