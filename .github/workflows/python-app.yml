@@ -1,17 +1,9 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
 name: Python application
 
 on:
   push:
-    branches: [ jdday-github-actions ]
-    tags:
-      - v1.*
   pull_request:
     branches: [ main ]
-
-
 
 jobs:
   lint-test:
