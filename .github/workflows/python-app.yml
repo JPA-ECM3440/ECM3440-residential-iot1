@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install poetry
-      - uses: snok/install-poetry@v1
+        uses: snok/install-poetry@v1
       - name: Testing poetry
         run: |
           poetry -v
