@@ -23,7 +23,15 @@ jobs:
         uses: snok/install-poetry@v1
       - name: Testing poetry
         run: |
-          poetry -v
+          poetry install
+      - name: Lint with flake8
+        run: |
+          poetry run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics &&
+      - name: Test with PyTest
+        run: |
+          poetry run pytest
+
+
 #  test:
 #    runs-on: ubuntu-latest
 #    steps:

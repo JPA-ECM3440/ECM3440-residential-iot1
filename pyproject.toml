@@ -14,6 +14,12 @@ counterfit-shims-grove = "^0.1.4-alpha.5"
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
 pytest = "^6.2.5"
+coverage = "^5.5"
+
+[tool.coverage.run]
+omit = [".*", "*/site-packages/*"]
+[tool.coverage.report]
+fail_under = 80
 
 
 [build-system]
