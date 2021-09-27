@@ -1,41 +1,6 @@
-
-
-from unittest import TestCase
 from unittest.mock import MagicMock, patch, mock_open
 
-from app_class import SoilMoistureMonitor, connect, IoTHubDeviceClient, main
-
-#
-# class TestAppClass(TestCase):
-#
-#     def setUp(self) -> None:
-#
-#         self.mock_soil_moisture_monitor = SoilMoistureMonitor(
-#             device_client=self.mock_device_client,
-#             adc=self.mock_adc,
-#             relay=self.mock_relay
-#         )
-#
-#     def tearDown(self) -> None:
-#         pass
-#
-#
-#
-#     @patch('app_class.json')
-#     @patch('app_class.Message')
-#     def test_get_reading(self, mock_message, mock_json):
-#         self.mock_soil_moisture_monitor.get_reading()
-#         self.mock_adc.read.assert_called_once_with(0)
-#         mock_message.assert_called_once_with(mock_json.dumps({'soil_moisture': self.mock_adc.read.return_value}))
-#         self.mock_device_client.send_message.assert_called_once_with(mock_message.return_value)
-#
-#
-# def test_main():
-#     print('tested')
-#     print('printed')
-
-
-
+from app_class import SoilMoistureMonitor, connect, main
 
 
 @patch('app_class.MethodResponse')
