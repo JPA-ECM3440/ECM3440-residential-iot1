@@ -54,8 +54,8 @@ def main():
         adc=adc,
         relay=relay
     )
-    if os.getenv('PROD') == 'TRUE':
-        CounterFitConnection.init('127.0.0.1', 5000)
+    
+    CounterFitConnection.init('127.0.0.1', 5000)
     take_readings(soil_moisture_monitor)
 
 
