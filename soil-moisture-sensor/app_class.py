@@ -47,8 +47,7 @@ def take_readings(soil_moisture_monitor):
 
 
 def main():
-    with open('connection_string.txt', 'r') as file:
-        device_client = connect(connection_string=file.read())
+    device_client = connect(connection_string=os.getenv('connection_string'))
     adc = ADC()
     relay = GroveRelay(5)
     soil_moisture_monitor = SoilMoistureMonitor(

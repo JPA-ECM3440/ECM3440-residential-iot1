@@ -48,13 +48,14 @@ def test_connect(mock_iot_hub_device_client):
     assert return_value == mock_device_client
 
 
-@patch('builtins.open', new_callable=mock_open, read_data='test_connection_string')
+@patch('os.getenv')
 @patch('app_class.connect')
 @patch('app_class.take_readings')
 @patch('app_class.SoilMoistureMonitor')
 @patch('app_class.GroveRelay')
 @patch('app_class.ADC')
-def test_main(mock_adc, mock_grove_relay, mock_soil_moisture_monitor, mock_take_readings, mock_connect, mock_open):
+def test_main(mock_adc, mock_grove_relay, mock_soil_moisture_monitor, mock_take_readings, mock_connect, mock_getenv):
+    mock_getenv.return_value = 'test_connection_string'
     mock_device_client = MagicMock()
     mock_connect.return_value = mock_device_client
     main()
