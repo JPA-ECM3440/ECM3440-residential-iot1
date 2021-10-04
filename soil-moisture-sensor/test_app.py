@@ -37,13 +37,13 @@ def test_get_reading(mock_message, mock_json):
 
 
 @patch('app_class.IoTHubDeviceClient')
-def test_connect(mock_iot_hub_device_client):
+def test_connect(mock_client):
     mock_device_client = MagicMock()
     mock_adc = MagicMock()
     mock_relay = MagicMock()
-    mock_iot_hub_device_client.create_from_connection_string.return_value = mock_device_client
+    mock_client.create_from_connection_string.return_value = mock_device_client
     return_value = connect('test_value')
-    mock_iot_hub_device_client.create_from_connection_string.assert_called_once_with('test_value')
+    mock_client.create_from_connection_string.assert_called_once_with('test_value')
     mock_device_client.connect.assert_called_once()
     assert return_value == mock_device_client
 
