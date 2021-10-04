@@ -54,10 +54,10 @@ def main():
         adc=adc,
         relay=relay
     )
-    
-    CounterFitConnection.init('127.0.0.1', 5000)
+
     take_readings(soil_moisture_monitor)
 
 
 if __name__ == 'main':
+    CounterFitConnection.init('127.0.0.1', 5000)
     main()
