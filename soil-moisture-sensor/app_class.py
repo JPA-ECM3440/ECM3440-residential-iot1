@@ -27,7 +27,6 @@ class SoilMoistureMonitor:
     def get_reading(self):
         soil_moisture = self.adc.read(0)
         print("Soil moisture:", soil_moisture)
-        print(dir(Message))
         message = Message(json.dumps({'soil_moisture': soil_moisture}))
         self.device_client.send_message(message)
 
