@@ -70,13 +70,14 @@ def test_connect(mock_client):
     assert return_value == mock_device_client
 
 
+@patch('app.CounterFitConnection')
 @patch('os.getenv')
 @patch('app.connect')
 @patch('app.take_readings')
 @patch('app.SoilMoistureMonitor')
 @patch('app.GroveRelay')
 @patch('app.ADC')
-def test_main(mock_adc, mock_grove_relay, mock_soil_moisture_monitor, mock_take_readings, mock_connect, mock_getenv):
+def test_main(mock_adc, mock_grove_relay, mock_soil_moisture_monitor, mock_take_readings, mock_connect, mock_getenv, mock_counter_fit):
     mock_getenv.return_value = 'test_connection_string'
     mock_device_client = MagicMock(spec=IoTHubDeviceClient)
     mock_connect.return_value = mock_device_client
@@ -85,3 +86,5 @@ def test_main(mock_adc, mock_grove_relay, mock_soil_moisture_monitor, mock_take_
     mock_grove_relay.assert_called_once_with(5)
     mock_connect.assert_called_once_with(connection_string='test_connection_string')
     mock_soil_moisture_monitor.assert_called_once_with(adc=mock_adc.return_value, relay=mock_grove_relay.return_value, device_client=mock_device_client)
+    mock_take_readings.assert_called_once_with(mock_soil_moisture_monitor.return_value)
+    mock_counter_fit.init.assert_called_once_with('127.0.0.1', 5000)

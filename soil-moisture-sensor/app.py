@@ -46,6 +46,7 @@ def take_readings(soil_moisture_monitor):
 
 
 def main():
+    CounterFitConnection.init('127.0.0.1', 5000)
     device_client = connect(connection_string=os.getenv('connection_string'))
     adc = ADC()
     relay = GroveRelay(5)
@@ -59,5 +60,4 @@ def main():
 
 
 if __name__ == '__main__':
-    CounterFitConnection.init('127.0.0.1', 5000)
     main()
