@@ -4,10 +4,10 @@ from azure.iot.device import IoTHubDeviceClient
 from counterfit_shims_grove.adc import ADC
 from counterfit_shims_grove.grove_relay import GroveRelay
 
-from app_class import SoilMoistureMonitor, connect, main
+from app import SoilMoistureMonitor, connect, main
 
 
-@patch('app_class.MethodResponse')
+@patch('app.MethodResponse')
 def test_relay_on(mock_method_response):
     mock_device_client = MagicMock(spec=IoTHubDeviceClient)
     mock_adc = MagicMock(spec=ADC)
@@ -26,7 +26,7 @@ def test_relay_on(mock_method_response):
     mock_relay.on.assert_called_once()
 
 
-@patch('app_class.MethodResponse')
+@patch('app.MethodResponse')
 def test_relay_off(mock_method_response):
     mock_device_client = MagicMock(spec=IoTHubDeviceClient)
     mock_adc = MagicMock(spec=ADC)
@@ -45,10 +45,8 @@ def test_relay_off(mock_method_response):
     mock_relay.off.assert_called_once()
 
 
-
-
-@patch('app_class.json')
-@patch('app_class.Message')
+@patch('app.json')
+@patch('app.Message')
 def test_get_reading(mock_message, mock_json):
     mock_device_client = MagicMock(spec=IoTHubDeviceClient)
     mock_adc = MagicMock(spec=ADC)
@@ -60,7 +58,7 @@ def test_get_reading(mock_message, mock_json):
     mock_device_client.send_message.assert_called_once_with(mock_message.return_value)
 
 
-@patch('app_class.IoTHubDeviceClient')
+@patch('app.IoTHubDeviceClient')
 def test_connect(mock_client):
     mock_device_client = MagicMock(spec=IoTHubDeviceClient)
     mock_adc = MagicMock(spec=ADC)
@@ -73,11 +71,11 @@ def test_connect(mock_client):
 
 
 @patch('os.getenv')
-@patch('app_class.connect')
-@patch('app_class.take_readings')
-@patch('app_class.SoilMoistureMonitor')
-@patch('app_class.GroveRelay')
-@patch('app_class.ADC')
+@patch('app.connect')
+@patch('app.take_readings')
+@patch('app.SoilMoistureMonitor')
+@patch('app.GroveRelay')
+@patch('app.ADC')
 def test_main(mock_adc, mock_grove_relay, mock_soil_moisture_monitor, mock_take_readings, mock_connect, mock_getenv):
     mock_getenv.return_value = 'test_connection_string'
     mock_device_client = MagicMock(spec=IoTHubDeviceClient)
