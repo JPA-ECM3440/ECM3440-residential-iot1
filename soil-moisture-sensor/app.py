@@ -14,6 +14,7 @@ class SoilMoistureMonitor:
         self.device_client = device_client
         self.adc = adc
         self.relay = relay
+        self.device_client.on_method_request_received = self.handle_request
 
     def handle_request(self, request):
         if request.name == "relay_on":
@@ -55,7 +56,6 @@ def main():
         adc=adc,
         relay=relay
     )
-    device_client.on_method_request_received = soil_moisture_monitor.handle_request
     take_readings(soil_moisture_monitor)
 
 
