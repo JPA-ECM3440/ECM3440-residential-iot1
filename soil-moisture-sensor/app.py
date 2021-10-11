@@ -31,7 +31,7 @@ class SoilMoistureMonitor:
         self.device_client.send_message(message)
 
 
-def connect(connection_string='<connection string>'):
+def connect(connection_string):
     device_client = IoTHubDeviceClient.create_from_connection_string(connection_string)
     print('Connecting')
     device_client.connect()
