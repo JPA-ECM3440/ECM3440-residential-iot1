@@ -8,6 +8,22 @@ from app import SoilMoistureMonitor, connect, main
 
 
 @patch('app.MethodResponse')
+def test_relay_default(mock_method_response):
+    mock_device_client = MagicMock(spec=IoTHubDeviceClient)
+    mock_adc = MagicMock(spec=ADC)
+    mock_relay = MagicMock(spec=GroveRelay)
+    mock_request = MagicMock()
+
+    mock_soil_moisture_monitor = SoilMoistureMonitor(adc=mock_adc, device_client=mock_device_client, relay=mock_relay)
+    mock_soil_moisture_monitor.handle_request(request=mock_request)
+
+    mock_method_response.create_from_method_request.assert_called_once_with(mock_request, 200)
+    mock_device_client.send_method_response.assert_called_once_with(
+        mock_method_response.create_from_method_request.return_value
+    )
+
+
+@patch('app.MethodResponse')
 def test_relay_on(mock_method_response):
     mock_device_client = MagicMock(spec=IoTHubDeviceClient)
     mock_adc = MagicMock(spec=ADC)
