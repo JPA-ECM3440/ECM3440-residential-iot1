@@ -55,7 +55,7 @@ def main():
         adc=adc,
         relay=relay
     )
-
+    device_client.on_method_request_received = soil_moisture_monitor.handle_request
     take_readings(soil_moisture_monitor)
 
 
