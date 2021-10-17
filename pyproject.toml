@@ -12,11 +12,12 @@ counterfit-connection = "^0.1.0-alpha.5"
 counterfit-shims-grove = "^0.1.4-alpha.5"
 
 [tool.poetry.dev-dependencies]
-flake8 = "^3.9.2"
-radon = "^5.1.0"
-xenon = "0.8.0"
-pytest = "^6.2.5"
 coverage = "6.1.1"
+flake8 = "^3.9.2"
+pytest = "^6.2.5"
+radon = "^5.1.0"
+responses = "^0.14.0"
+xenon = "0.8.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
