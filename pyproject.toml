@@ -13,6 +13,7 @@ counterfit-shims-grove = "^0.1.4-alpha.5"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.9.2"
+radon = "^5.1.0"
 pytest = "^6.2.5"
 
 [build-system]
