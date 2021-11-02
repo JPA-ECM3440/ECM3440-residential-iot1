@@ -20,7 +20,7 @@ jobs:
           poetry run flake8 . --count --select=E9,F63,F7,F82 --max-complexity=10 --max-line-length=127 --show-source --statistics
       - name: Measure complexity with Xenon
         run: |
-          poetry run xenon --max-absolute A --max-modules A --max-average A path soil-moisture-sensor/app.py
+          poetry run xenon --max-absolute A --max-modules A --max-average A path soil-moisture-sensory
       - name: Test with PyTest
         run: |
           poetry run pytest
