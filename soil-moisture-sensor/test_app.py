@@ -17,10 +17,10 @@ def test_relay_default(mock_method_response):
     mock_soil_moisture_monitor = SoilMoistureMonitor(adc=mock_adc, device_client=mock_device_client, relay=mock_relay)
     mock_soil_moisture_monitor.handle_request(request=mock_request)
 
-    mock_method_response.create_from_method_request.assert_called_once_with(mock_request, 200)
     mock_device_client.send_method_response.assert_called_once_with(
         mock_method_response.create_from_method_request.return_value
     )
+    assert mock_soil_moisture_monitor.device_client.on_method_request_received == mock_soil_moisture_monitor.handle_request
 
 
 @patch('app.MethodResponse')
@@ -35,11 +35,11 @@ def test_relay_on(mock_method_response):
     mock_soil_moisture_monitor = SoilMoistureMonitor(adc=mock_adc, device_client=mock_device_client, relay=mock_relay)
     mock_soil_moisture_monitor.handle_request(request=mock_request)
 
-    mock_method_response.create_from_method_request.assert_called_once_with(mock_request, 200)
     mock_device_client.send_method_response.assert_called_once_with(
         mock_method_response.create_from_method_request.return_value
     )
     mock_relay.on.assert_called_once()
+    assert mock_soil_moisture_monitor.device_client.on_method_request_received == mock_soil_moisture_monitor.handle_request
 
 
 @patch('app.MethodResponse')
@@ -59,6 +59,7 @@ def test_relay_off(mock_method_response):
         mock_method_response.create_from_method_request.return_value
     )
     mock_relay.off.assert_called_once()
+    assert mock_soil_moisture_monitor.device_client.on_method_request_received == mock_soil_moisture_monitor.handle_request
 
 
 @patch('app.json')
