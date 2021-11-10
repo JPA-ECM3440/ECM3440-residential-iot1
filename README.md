@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/JPA-ECM3440/ECM3440-residential-iot1/branch/main/graph/badge.svg?token=BEXVQB4VV9)](https://codecov.io/gh/JPA-ECM3440/ECM3440-residential-iot1)
 # ECM3440-residential-iot1
 
 ## IoT DevOps workshop 1

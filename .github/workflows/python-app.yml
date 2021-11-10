@@ -21,6 +21,14 @@ jobs:
       - name: Measure complexity with Xenon
         run: |
           poetry run xenon --max-absolute A --max-modules A --max-average A path soil-moisture-sensory
-      - name: Test with PyTest
+      - name: Test with PyTest and generate coverage.xml
         run: |
-          poetry run pytest
+          poetry run coverage run -m pytest && poetry run coverage xml
+      - uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          flags: pytest # optional
+          name: codecov-umbrella # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
