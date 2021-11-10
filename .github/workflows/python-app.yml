@@ -24,3 +24,10 @@ jobs:
       - name: Test with PyTest and generate coverage.xml
         run: |
           poetry run coverage run -m pytest && poetry run coverage xml coverage.xml
+      - uses: codecov/codecov-action@v2
+        with:
+          files: ./coverage.xml
+          flags: pytest # optional
+          name: codecov-umbrella # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
