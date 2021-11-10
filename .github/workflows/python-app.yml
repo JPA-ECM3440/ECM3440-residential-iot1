@@ -23,7 +23,7 @@ jobs:
           poetry run xenon --max-absolute A --max-modules A --max-average A path soil-moisture-sensory
       - name: Test with PyTest and generate coverage.xml
         run: |
-          poetry run coverage run -m pytest && poetry run coverage xml && echo "testing something"
+          poetry run coverage run -m pytest && poetry run coverage xml
       - uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
