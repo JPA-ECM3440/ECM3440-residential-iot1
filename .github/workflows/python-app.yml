@@ -23,4 +23,4 @@ jobs:
           poetry run xenon --max-absolute A --max-modules A --max-average A path soil-moisture-sensory
       - name: Test with PyTest and generate coverage.xml
         run: |
-          poetry run coverage run -m pytest && coverage xml coverage.xml
+          poetry run coverage run -m pytest && poetry run coverage xml coverage.xml
