@@ -12,11 +12,14 @@ counterfit-connection = "^0.1.0-alpha.5"
 counterfit-shims-grove = "^0.1.4-alpha.5"
 
 [tool.poetry.dev-dependencies]
-flake8 = "^3.9.2"
-pytest = "^6.2.5"
-responses = "^0.14.0"
 azure-functions = "^1.7.2"
 azure-iot-hub = "^2.6.0"
+coverage = "6.1.1"
+flake8 = "^3.9.2"
+radon = "^5.1.0"
+xenon = "0.8.0"
+pytest = "^6.2.5"
+responses = "^0.14.0"
 
 
 [build-system]
