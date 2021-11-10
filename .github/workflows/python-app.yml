@@ -26,6 +26,7 @@ jobs:
           poetry run coverage run -m pytest && poetry run coverage xml coverage.xml
       - uses: codecov/codecov-action@v2
         with:
+          token: ${{ secrets.CODECOV_TOKEN }}
           files: coverage.xml
           flags: pytest # optional
           name: codecov-umbrella # optional
