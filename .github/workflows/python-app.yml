@@ -50,4 +50,4 @@ jobs:
     needs: docker-image-build
     steps:
       - name: Deploy docker image
-      - run: echo 'Deploy docker image' && sleep 8
+        run: echo 'Deploy docker image' && sleep 8
