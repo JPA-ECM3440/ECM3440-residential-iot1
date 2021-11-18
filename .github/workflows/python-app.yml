@@ -45,3 +45,10 @@ jobs:
         run: echo 'Login to docker registory' && sleep 1
       - name: 'Push built image to container registry'
         run: echo 'Push image' && sleep 11
+  deploy-image:
+    runs-on: ubuntu-latest
+    needs: docker-image-build
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy docker image
+      - run: echo 'Deploy docker image' && sleep 8
