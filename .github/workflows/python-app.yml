@@ -39,8 +39,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: 'Docker Build'
         run: echo 'Builidng docker image' && sleep 34
-      - name: 'Azure log in'
-        run: echo 'Login to Azure CLI' && sleep 2
       - name: 'Docker container registry log in'
         run: echo 'Login to docker registory' && sleep 1
       - name: 'Push built image to container registry'
