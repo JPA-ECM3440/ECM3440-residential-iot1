@@ -18,6 +18,17 @@ jobs:
       - name: Lint with flake8
         run: |
           poetry run flake8 . --count --select=E9,F63,F7,F82 --max-complexity=10 --max-line-length=127 --show-source --statistics
-      - name: Test with PyTest
+      - name: Measure complexity with Xenon
         run: |
-          poetry run pytest
+          poetry run xenon --max-absolute A --max-modules A --max-average A path soil-moisture-sensory
+      - name: Test with PyTest and generate coverage.xml
+        run: |
+          poetry run coverage run -m pytest && poetry run coverage xml
+      - uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage.xml
+          flags: pytest # optional
+          name: codecov-umbrella # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
